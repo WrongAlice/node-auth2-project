@@ -39,7 +39,7 @@ router.post("/register", validateRoleName, (req, res, next) => {
 router.post("/login", checkUsernameExists, (req, res, next) => {
   let { username, password } = req.body;
 
-  Users.findBy({ username })
+  User.findBy({ username })
     .first()
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
